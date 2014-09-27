@@ -1,0 +1,125 @@
+<html>
+<head>
+	<style>
+		body {
+			margin: 0;
+		}
+		.content {
+			max-width: 80em;
+			margin: 0 auto;
+		}
+		.popup {
+			max-width: 60em;
+			margin: 0 auto;
+			background: #ccc;
+			padding: 20px;
+			max-height: 90%;
+			overflow-y: auto;
+		}
+		.table {
+			display: table;
+			position: fixed;
+			height: 100%;
+			width: 100%;
+			top: 0;
+		}
+		.table-cell {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.js {
+			position: fixed;
+			top: 50%;
+			left: 0;
+			right: 0;
+		}
+		.trans {
+			position: fixed;
+			top: 50%;
+			left: 0;
+			right: 0;
+			transform: translateY(-50%);
+		}
+		.flex {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.flex .popup {
+			margin: 0;
+		}
+	</style>
+	<script src="jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#table-close').click(function(){
+				$('.table').hide()
+			})
+			$('#table-popup').click(function(){
+				$('.table').show()
+			})
+			$('#trans-close').click(function(){
+				$('.trans').hide()
+			})
+			$('#trans-popup').click(function(){
+				$('.trans').show()
+			})
+			$('#flex-close').click(function(){
+				$('.flex').hide()
+			})
+			$('#flex-popup').click(function(){
+				$('.flex').show()
+			})
+			$('#js-close').click(function(){
+				$('.js').hide()
+			})
+			$('#js-popup').click(function(){
+				$('.js').show().css('margin-top','-'+$('.js').outerHeight()/2+'px')
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="content">
+		<button id="table-popup">Ќа таблицах</button> <button id="js-popup">— отрицатильным margin</button> <button id="trans-popup">— transform</button> <button id="flex-popup">— flexbox</button>
+	</div>
+	<div class="table" style="display:none">
+		<div class="table-cell">
+			<div class="popup">
+				<p>
+					ѕлюс - никаких трюков (почти), высока€ веро€тность работать везде и всегда, решение на CSS, адаптивное.<br/>
+					ћинус - решение, т€нущее за собой все проблемы использовани€ таблиц, много вложенности.
+				</p>
+				<button id="table-close">x</button>
+			</div>
+		</div>
+	</div>
+	<div class="js popup" style="display:none">
+		<p>
+			ѕлюс - решение с отрицательным внешним отступом от середины - можно примен€ть при статичном контенте хот€ бы с известной высотой.<br/>
+			ћинус - требует дополнительных расчетов.
+		</p>
+		<button id="js-close">x</button>
+	</div>
+	<div class="trans popup" style="display:none">
+		<p>
+			ѕлюс - решение похоже на решение с отрицательным отступом, но работает на чистом css.<br/>
+			ћинус - использование transform отсекает IE меньше 9.
+		</p>
+		<button id="trans-close">x</button>
+	</div>
+	<div class="flex">
+		<div class="popup">
+			<p>
+				ѕлюс - flexbox дает неверно€тные возможности по выравниванию блоков внутри контейнера.<br/>
+				ћинус - самое плохое решение по поддерживаемости браузерами (IE 10+).
+			</p>
+			<button id="flex-close">x</button>
+		</div>
+	</div>
+</body>
+</html>
